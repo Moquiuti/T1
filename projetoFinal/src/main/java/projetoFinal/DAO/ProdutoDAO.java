@@ -51,8 +51,23 @@ public class ProdutoDAO {
 	}
 
 	public void salvar(Produto produto) {
+		cadastrar(produto);
 		// TODO Auto-generated method stub
 		
+	}
+
+	private void cadastrar(Produto produto) {
+		// TODO Auto-generated method stub
+		String sql = "insert  into produto (descricao,valor) values (?,?)";
+        try {
+            PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+            preparadorSQL.setString(1, produto.getDescricao());
+            preparadorSQL.setString(2, produto.getValor());
+            preparadorSQL.execute();
+            preparadorSQL.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
 	}
 
 	public void excluir(Integer id) {

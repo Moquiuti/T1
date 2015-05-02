@@ -112,8 +112,10 @@ public class ClienteController extends HttpServlet {
 			cliente.setEmail(email);
 			cliente.setTelefone(telefone);
 		} else if (id != null && id != "" && id != "0") {
+			int temp = Integer.parseInt(id);
+			System.out.println(temp);
 			clienteService.excluir(Integer.parseInt(id));
-			cliente.setId(Integer.parseInt(id));
+			cliente.setId(temp);
 			cliente.setNome(nome);
 			cliente.setEmail(email);
 			cliente.setTelefone(telefone);

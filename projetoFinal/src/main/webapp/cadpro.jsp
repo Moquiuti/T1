@@ -7,7 +7,7 @@
 <title>Cadastrar Produto</title>
 </head>
 <body>
-	<form action="ProdutoServlet" method="POST">
+	<form action="ProdutoController" method="POST">
 		<input type="hidden" name="id"> <label>Descrição: </label> <input
 		type="text" name="descricao"> <label>Valor: </label> <input
 		type="text" name="valor"> <input type="submit" 

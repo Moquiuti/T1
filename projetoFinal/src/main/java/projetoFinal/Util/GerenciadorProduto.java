@@ -5,7 +5,7 @@ import java.util.List;
 import projetoFinal.Classes.Produto;
 
 public class GerenciadorProduto {
-	private static List<Produto> produtos =  new ArrayList<Produto>(); 
+	static List<Produto> produtos =  new ArrayList<Produto>(); 
 	
 	public void salvar(Produto produto) {
 		produtos.add(produto);

@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import projetoFinal.Classes.Cliente;
 import projetoFinal.Classes.Produto;
 import projetoFinal.Util.ConexaoUtil;
 
@@ -46,8 +48,32 @@ public class ProdutoDAO {
 	}
 
 	public List<Produto> buscarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		  String sql = "select * from produto order by idproduto";
+	        try {
+	            PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+	            //Armazenando Resultado da consulta
+	            ResultSet resultado = preparadorSQL.executeQuery();
+	            List<Produto> lista = new ArrayList<>();
+	            while (resultado.next()) {
+	                //Instancia de cliente
+	                Produto pro = new Produto();
+
+	                //Atribuindo dados do resultado no objeto cliente
+	                pro.setId(resultado.getInt("idproduto"));
+	                pro.setDescricao(resultado.getString("descricao"));
+	                pro.setValor(resultado.getString("valor"));
+	                //Adicionando cliente na lista
+	                lista.add(pro);
+	            }
+	            
+	            preparadorSQL.close();
+	            return lista;
+	        } catch (SQLException ex) {
+//	        	System.out.println("Chegou aqui");
+	        	Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+	            return null;
+	        }
+
 	}
 
 	public void salvar(Produto produto) {
@@ -70,7 +96,7 @@ public class ProdutoDAO {
         }
 	}
 	
-	public void alterar(Produto produto) {
+    public void alterar(Produto produto) {
         String sql = "update produto set descricao=?, valor=? ";
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
@@ -82,10 +108,11 @@ public class ProdutoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
 
+    }
+    
 	public void excluir(Integer id) {
-        String sql= "delete from cliente where idcliente=?";
+        String sql = "delete from produto where idproduto=?";
 
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
@@ -94,13 +121,10 @@ public class ProdutoDAO {
             preparadorSQL.execute();
             preparadorSQL.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
 		
 	}
 	
 	
 }
-	
-	

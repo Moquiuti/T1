@@ -82,12 +82,10 @@ public class ProdutoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
 	public void excluir(Integer id) {
-
-        String sql = "delete from cliente where idcliente=?";
+        String sql= "delete from cliente where idcliente=?";
 
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);

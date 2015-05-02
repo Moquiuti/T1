@@ -69,9 +69,36 @@ public class ProdutoDAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 	}
+	
+	public void alterar(Produto produto) {
+        String sql = "update produto set descricao=?, valor=? ";
+        try {
+            PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+            preparadorSQL.setInt(1, produto.getId());
+            preparadorSQL.setString(2, produto.getDescricao());
+            preparadorSQL.setString(3, produto.getValor());
+            preparadorSQL.execute();
+            preparadorSQL.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
 	public void excluir(Integer id) {
-		// TODO Auto-generated method stub
+
+        String sql = "delete from cliente where idcliente=?";
+
+        try {
+            PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+            preparadorSQL.setInt(1, id);
+
+            preparadorSQL.execute();
+            preparadorSQL.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
 		
 	}
 	

@@ -138,7 +138,7 @@ public class ClienteController extends HttpServlet {
 			resp.getWriter()
 					.print("<script> window.alert('"
 							+ e.getMessage()
-							+ "'); location.href='menuprincipal.html'; </script>");
+							+ "'); location.href='menuprincipal.jsp'; </script>");
 
 			e.printStackTrace();
 		}

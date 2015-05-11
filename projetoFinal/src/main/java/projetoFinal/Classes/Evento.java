@@ -1,6 +1,6 @@
 package projetoFinal.Classes;
 
-public class TipoEvento {
+public class Evento {
 	private Integer id;
 	private String descricao;
 	
@@ -12,5 +12,9 @@ public class TipoEvento {
 	}
 	public Integer getId() {
 		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}	
+	
 }

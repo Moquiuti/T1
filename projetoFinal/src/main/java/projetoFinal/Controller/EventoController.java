@@ -10,58 +10,56 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import projetoFinal.Classes.Cliente;
-import projetoFinal.Classes.Produto;
-import projetoFinal.DAO.ProdutoService;
+import projetoFinal.Classes.Evento;
+import projetoFinal.DAO.EventoService;
 
-/**
- * Servlet implementation class ProdutoController
- */
-@WebServlet("/ProdutoController")
-public class ProdutoController extends HttpServlet {
+@WebServlet({ "/EventoController", "/EventoServlet", "/EventoController.do" })
+public class EventoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	ProdutoService produtoService = new ProdutoService();
-
+	EventoService eventoService = new EventoService();
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
+
 		String acao = req.getParameter("acao");
 		System.out.println(acao);
 
 		if (acao == null || acao == "") {
-			Produto produto = new Produto();
-			produto.setId(0);
-			produto.setDescricao("");
-			produto.setValor("");
-			req.setAttribute("pro", produto);
-			req.getRequestDispatcher("produtos.jsp").forward(req, resp);
+			Evento evento = new Evento();
+			evento.setId(0);
+			evento.setDescricao("");
+			req.setAttribute("eto", evento);
+			req.getRequestDispatcher("eventos.jsp").forward(req, resp);
 		}
 		if (acao.equals("lis")) {
 			// Pegar a lista
-			List<Produto> produtos = produtoService.buscarTodos();
-			// for (Cliente c : clientes) {
-			// System.out.println("chegou aqui");
-			// c.getNome();
-			// }
-			// Adiciona a lista no request como atributo
+			List<Evento> eventos = eventoService.buscarTodos();
+			 for (Evento e : eventos) {
+//			 System.out.println("chegou aqui");
+			 e.getDescricao();
+			 }
+//			 Adiciona a lista no request como atributo
 
-			req.setAttribute("pro", produtos);
+			req.setAttribute("eto", eventos);
 
 			// Levar para o JSP
-			RequestDispatcher view = req.getRequestDispatcher("produtos.jsp");
+			RequestDispatcher view = req.getRequestDispatcher("eventos.jsp");
 			view.forward(req, resp);
 		} else if (acao.equals("exc")) {
 			String id = req.getParameter("id");
-			produtoService.excluir(Integer.parseInt(id));
+			eventoService.excluir(Integer.parseInt(id));
 			resp.getWriter()
-					.print("<script> window.alert('Excluido Sucesso!'); location.href='ProdutoController?acao=lis'; </script>");
+					.print("<script> window.alert('Excluido Sucesso!'); location.href='EventoController?acao=lis'; </script>");
 
 		} else if (acao.equals("edit")) {
 			String id = req.getParameter("id");
-			Produto produtoBuscado = produtoService.buscarPorId(Integer.parseInt(id));
-			req.setAttribute("pro", produtoBuscado);
-			req.getRequestDispatcher("produto.jsp").forward(req, resp);
-			
+			System.out.println(id);
+			Evento eventoBuscado = eventoService.buscarPorId(Integer
+					.parseInt(id));
+			System.out.println(eventoBuscado.getDescricao());
+			req.setAttribute("eto", eventoBuscado);
+			req.getRequestDispatcher("evento.jsp").forward(req, resp);
+
 		}
 	}
 
@@ -70,8 +68,7 @@ public class ProdutoController extends HttpServlet {
 		resp.setContentType("text/html");
 
 		// instanciando uma classe cliente
-		Produto produto = new Produto();
-
+		Evento evento = new Evento();
 		// recebendo os valores da tela para variaveis comuns
 		String id = req.getParameter("id");
 
@@ -83,7 +80,6 @@ public class ProdutoController extends HttpServlet {
 
 		// recebendo os valor da tela para variaveis comuns
 		String descricao = req.getParameter("descricao");
-		String valor = req.getParameter("valor");
 
 		// ele sempre vai entrar nesse if quando o cliente for a cadastrar
 		// pois se os valores vierem preenchidos que no caso sempre virao e o id
@@ -95,27 +91,26 @@ public class ProdutoController extends HttpServlet {
 			// }
 
 			// Atibruindo as variaveis comuns aos valores da classe criada
-			produto.setDescricao(descricao);
-			produto.setValor(valor);
+			evento.setDescricao(descricao);
 
 		} else if (id != null && id != "" && id != "0") {
 			int temp = Integer.parseInt(id);
 			System.out.println(temp);
-			produtoService.excluir(temp);
-			produto.setId(temp);
-			produto.setDescricao(descricao);
-			produto.setValor(valor);
+			eventoService.excluir(temp);
+			evento.setId(temp);
+			evento.setDescricao(descricao);
 		}
 
 		try {
 			// Chama-se o metodo salvar da classe de serviços do produto
 			// passando a classe produto
-			produtoService.salvar(produto);
+			System.out.println("dentro do try classe evento controller"+evento.getDescricao());
+			eventoService.salvar(evento);
 
 			// caso tudo corra corretamente é disparada esse alert na tela como
 			// operação realizada com sucesso
 			resp.getWriter()
-					.print("<script> window.alert('Salvo Sucesso!'); location.href='ProdutoController?acao=lis'; </script>");
+					.print("<script> window.alert('Salvo Sucesso!'); location.href='EventoController?acao=lis'; </script>");
 
 		} catch (Exception e) {
 			// TODO: handle exception

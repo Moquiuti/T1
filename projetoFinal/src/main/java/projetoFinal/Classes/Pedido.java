@@ -1,38 +1,58 @@
 package projetoFinal.Classes;
 
-import java.util.Date;
+import projetoFinal.DAO.ClienteService;
+import projetoFinal.DAO.EventoService;
 
 public class Pedido {
 	private Integer id;
 	private String origemPedido;
-	private Date dataPedido;
+	private String dataPedido;
 	private Cliente cliente;
+	
+	public ClienteService getClienteService() {
+		return clienteService;
+	}
+	public void setClienteService(ClienteService clienteService) {
+		this.clienteService = clienteService;
+	}
+	public EventoService getEventoService() {
+		return eventoService;
+	}
+	public void setEventoService(EventoService eventoService) {
+		this.eventoService = eventoService;
+	}
 	private String ceriominal;
-	private Date dataEvento;
-	private TipoEvento tipoEvento;
+	private String dataEvento;
+	private Evento tipoEvento;
 	private String horaEvento;
 	private String indicacao;
 	private String localEvento;
 	private String enderecoEvento;
 	private String obs;
 	
+	ClienteService clienteService = new ClienteService();
+	EventoService eventoService = new EventoService();
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getOrigemPedido() {
 		return origemPedido;
 	}
 	public void setOrigemPedido(String origemPedido) {
 		this.origemPedido = origemPedido;
 	}
-	public Date getDataPedido() {
+	public String getDataPedido() {
 		return dataPedido;
 	}
-	public void setDataPedido(Date dataPedido) {
+	public void setDataPedido(String dataPedido) {
 		this.dataPedido = dataPedido;
 	}
 	public Cliente getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setCliente(Cliente cli) {
+		this.cliente = cli;
 	}
 	public String getCeriominal() {
 		return ceriominal;
@@ -40,16 +60,16 @@ public class Pedido {
 	public void setCeriominal(String ceriominal) {
 		this.ceriominal = ceriominal;
 	}
-	public Date getDataEvento() {
+	public String getDataEvento() {
 		return dataEvento;
 	}
-	public void setDataEvento(Date dataEvento) {
+	public void setDataEvento(String dataEvento) {
 		this.dataEvento = dataEvento;
 	}
-	public TipoEvento getTipoEvento() {
+	public Evento getTipoEvento() {
 		return tipoEvento;
 	}
-	public void setTipoEvento(TipoEvento tipoEvento) {
+	public void setTipoEvento(Evento tipoEvento) {
 		this.tipoEvento = tipoEvento;
 	}
 	public String getHoraEvento() {

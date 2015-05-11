@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+ background-image: url(background2.jpg);
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size:100%;
+ margin:0;	
+ padding:0;
+ text-align:center; 
+ width: 760px;	
+ margin:0 auto;	
+ text-align:left;
+}
+
+fieldset {
+    border: 0;
+}
+ 
+body, input, select, textarea, button {
+    font-family: sans-serif;
+    font-size: 1em;
+}
+ 
+.grupo:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+ 
+.campo {
+    margin-bottom: 1em;
+}
+ 
+.campo label {
+    margin-bottom: 0.2em;
+    color: #000;
+    display: block;
+    font-weight: bold;
+}
+ 
+fieldset.grupo .campo {
+    float:  left;
+    margin-right: 1em;
+}
+ 
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="url"],
+.campo input[type="tel"],
+.campo select,
+.campo textarea {
+    padding: 0.2em;
+    border: 1px solid #CCC;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    display: block;
+}
+ 
+.campo select option {
+    padding-right: 1em;
+}
+ 
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+    background: #FFC;
+}
+ 
+.campo label.checkbox {
+    color: #000;
+    display: inline-block;
+    margin-right: 1em;
+}
+ 
+.botao {
+    font-size: 1.5em;
+    background: #c0c0c0;
+    border: 0;
+    margin-bottom: 1em;
+    color: #FFF;
+    padding: 0.1em 0.3em;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+ 
+.botao:hover {
+    background: #808080;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: none;
+}
+ 
+.botao, select, label.checkbox {
+    cursor: pointer;
+}
+table
+      {
+        font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+        width:100%;
+        border-collapse:collapse;
+      }
+      table td, th
+      {
+        border:1px solid #2424FF;
+        padding:3px 7px 2px 7px;
+      }
+      table th
+      {
+        font-size:1.2em;
+        text-align:left;
+        padding-top:5px;
+        padding-bottom:4px;
+        background-color:#2E82FF;
+        color:#fff;
+      }
+      table tr.alt td
+      {
+        color:#000;
+        background-color:#D6EDFF;
+      }

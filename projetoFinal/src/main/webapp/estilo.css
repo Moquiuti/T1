@@ -1,13 +1,9 @@
 @CHARSET "ISO-8859-1";
 /* Fundo do menu */
 
-body { 
-	background-image: url("file:///D:/Desenvolvimento/workspace/projetoFinal/src/imagens/FundoTelaa.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+body {
+ background-image: url(background.jpg);
 }
-
-
 .menu{
   background: #000;
 }

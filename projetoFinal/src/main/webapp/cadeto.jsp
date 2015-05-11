@@ -8,21 +8,18 @@
 <style type="text/css">
 @import url("estiloform.css");
 </style>
-<title>Cadastrar Cliente</title>
+<title>Cadastrar Evento</title>
 <%@include file="header.html" %>
 </head>
 <body>
-
-	<form action="ClienteServlet" method="POST">
-		<fieldset  >
+	<form action="EventoController" method="POST">
+		<fieldset>
 			<input type="hidden" name="id">
 			<fieldset class="grupo">
-				<div class="campo">
-					<label> Nome: </label> <input type="text" name="nome"> <label>
-						Email: </label> <input type="text" name="email"> <label>
-						Telefone: </label> <input type="text" name="telefone"> 
-						<button class="botao submit" type="submit" >Salvar</button>
-						<button class="botao submit" type="reset" onclick="location.href='http://localhost:8080/projetoFinal/menuprincipal.jsp'">Retornar</button>
+				<input type="hidden" name="id"> <label>Descrição: </label> <input
+					type="text" name="descricao"> 
+					<button class="botao submit" type="submit" >Salvar</button>
+					<button class="botao submit" type="reset" onclick="location.href='http://localhost:8080/projetoFinal/menuprincipal.jsp'">Retornar</button>
 			</fieldset>
 			</div>
 		</fieldset>

@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
-<%@page import="projetoFinal.Classes.Produto"%>
-<%@page import="projetoFinal.Util.GerenciadorProduto"%>
-
+<%@page import="projetoFinal.Classes.Evento"%>
+<%@page import="projetoFinal.Util.GerenciadorEvento"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,15 +10,13 @@
 <style type="text/css">
 @import url("estiloform.css");
 </style>
-<title>Listar Produtos</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Produtos</title>
+<title>Listar Eventos</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script type="text/javascript">
 	function confirmaExclusao(id) {
 		confirmou = window.confirm("Tem Certeza que deseja Excluir?")
 		if (confirmou == true) {
-			location.href = "ProdutoController?acao=exc&id=" + id;
+			location.href = "EventoController?acao=exc&id=" + id;
 		}
 	}
 </script>
@@ -29,28 +26,26 @@
 	<fieldset>
 		<fieldset class="grupo">
 			<div class="campo">
-				<h1>Lista de Produtos</h1>
+				<h1>Lista de Eventos</h1>
 				<table>
 					<tr class="alt">
 						<td>ID</td>
 						<td>Descrição</td>
-						<td>Valor</td>
 					</tr>
 					<%
 						//Scriptlet
-						List<Produto> produtos;
-						produtos = (List<Produto>) request.getAttribute("pro");
+						List<Evento> eventos;
+						eventos = (List<Evento>) request.getAttribute("eto");
 
-						for (int i = 0; i < produtos.size(); i++) {
-							Produto p = produtos.get(i);
+						for (int i = 0; i < eventos.size(); i++) {
+							Evento e = eventos.get(i);
 					%>
 
 					<tr>
-						<td><%=p.getId()%></td>
-						<td><%=p.getDescricao()%></td>
-						<td><%=p.getValor()%></td>
-						<td><button class="botao submit" type="submit" onclick="location.href='javascript:confirmaExclusao(<%=p.getId()%>)'">EXCLUIR</button></td>
-						<td><button class="botao submit" type="submit" onclick="location.href='ProdutoController?acao=edit&id=<%=p.getId()%>'">EDITAR</button></td>
+						<td><%=e.getId()%></td>
+						<td><%=e.getDescricao()%></td>
+						<td><button class="botao submit" type="submit" onclick="location.href='javascript:confirmaExclusao(<%=e.getId()%>)'">EXCLUIR</button></td>
+						<td><button class="botao submit" type="submit" onclick="location.href='EventoController?acao=edit&id=<%=e.getId()%>'">EDITAR</button></td>
 					</tr>
 					<%
 						}
